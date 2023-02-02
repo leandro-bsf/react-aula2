@@ -4,16 +4,16 @@ import {View , Text , StyleSheet, TouchableOpacity} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import  * as Animatable from 'react-native-animatable';
 //23:41
-export default function TaskList({data}){
+export default function TaskList({data , handleDelete}){
      return (
          <Animatable.View
           style={styles.container}
           anamation="bounceIn"
           useNativeDriver
           >
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=> handleDelete(data)}>
            
-            <Ionicons name="md-checkmark-circle" size={32} color="green" />
+            <Ionicons name="md-checkmark-circle" size={32} color="#121212" />
             </TouchableOpacity>
             <View>
            
