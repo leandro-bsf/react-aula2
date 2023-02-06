@@ -13,6 +13,7 @@ export default function App(){
  const[open, setOpen] = useState(false);
  const[input, setInput] = useState('');
 //busca todas a tarefas ao iniciar o app
+
   useEffect(()=>{
    async function loadTasks(){
         const taskStorage =  await AsyncStorage.getItem('@task');
@@ -33,12 +34,13 @@ export default function App(){
   },[task]);
 
  function handleAdd(){
-  if(input === '') return;
+  
+  if(input === '')  return;
   const data ={
-    key: input,
-    task: input
+     key: input, 
+     task: input
   };
-  setTask([...task, data]);
+  setTask([... task, data]);
   setOpen(false);
   setInput('');
  }
@@ -72,7 +74,7 @@ export default function App(){
                  <Text  style={styles.modalTitle}> Nova Tarefa</Text>
               </View>
 
-              <Animatable.View style={styles.modalBody} animation="fadeInup" useNativeDriver>
+              <Animatable.View style={styles.modalBody} animation="fadeInUp" useNativeDriver>
                 
                  <TextInput
                  multiline={true}
@@ -80,11 +82,11 @@ export default function App(){
                  outoCorrect={false}
                   placeholder="O que precisa fazer hoje?"
                   style={styles.input}
-                  values={input}
-                  onChageText={ (texto) => setInput(texto)}
+                  value={input}
+                  onChangeText={ (texto) => setInput(texto)}
                  />
                  
-                 <TouchableOpacity style={styles.handleAdd} onPress={handleAdd}>
+                 <TouchableOpacity style={styles.handleAdd}  onPress={handleAdd}>
                   <Text  style={styles.handleAddText}> Cadastrar</Text>
                  </TouchableOpacity>
 
@@ -201,5 +203,6 @@ const styles = StyleSheet.create({
       borderRadius: 5
 
     },
-    handleAdd
+   
+
 });
